@@ -1,0 +1,77 @@
+<html>
+<head><title>app</title>
+</head>
+<body ng-app="appModule" ng-controller="IndexController as vm" layout="column">
+
+<header>
+    <md-toolbar>
+        <div class="md-toolbar-tools" flex layout-align="space-around center" layout-md="column" layout-wrap>
+            <div flex>
+                <a href="#/home">
+                    <md-button class="md-button">
+                        Home
+                    </md-button>
+                </a>
+                <a href="#/about">
+                    <md-button class="md-button">
+                        About
+                    </md-button>
+                </a>
+                <a href="#/attractions">
+                    <md-button ng-disabled="!vm.userConnected" class="md-button">
+                        Attractions
+                    </md-button>
+                </a>
+            </div>
+            <md-button ng-disabled="!vm.userConnected" class="md-icon-button" href="#/favorites" aria-label="Favorite">
+                <md-icon md-svg-icon="assets/icons/favorite-heart-pressed.svg" class="favorite-icon"></md-icon>
+            </md-button>
+
+        </div>
+    </md-toolbar>
+
+
+</header>
+
+<div style="margin-top: 1%;" flex layout="column" ng-view></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<script src="index.route.js"></script>
+<script src="components/attraction/attraction.controller.js"></script>
+
+<script src="components/homePage/homePage.controller.js"></script>
+<script src="components/registeredUsers/registeredUsers.controller.js"></script>
+<script src="components/attraction/newReview.controller.js"></script>
+
+<!-- Angular Material Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
+<script src="components/attractions/attractions.controller.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/angular1-star-rating@1.2.11/dist/index.min.js"></script>
+<script src="../node_modules/md-chips-select/dist/md-chips-select.min.js"></script>
+<script src="components/about/about.controller.js"></script>
+<link rel="stylesheet" type="text/css" href="../node_modules/md-chips-select/dist/md-chips-select.min.css">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-touch.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.3/TweenMax.min.js"></script>
+<script src="../node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
+
+<script src="https://npmcdn.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+<link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css"/>
+
+<!--controllers-->
+<script src="index.controller.js"></script>
+<script src="components/favorite/favorite.controller.js"></script>
+
+<!--services-->
+<script src="components/shared/localStorage.service.js"></script>
+<script src="components/shared/setToken.service.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<md-dialog aria-label="New Review">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>New Review</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="assets/icons/close.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <md-input-container md-no-float class="md-block" style=" margin: 5px">
+                    <span>your review:</span>
+                    <input ng-model="vm.review" type="text" size="35">
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button ng-click="answer(vm.review)">
+                Add
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

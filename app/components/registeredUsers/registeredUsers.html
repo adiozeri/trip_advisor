@@ -1,0 +1,47 @@
+<div ng-if="vm.isLoading" layout="row" flex layout-sm="column" layout-align="center center">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+
+<div layout="column" flex ng-if="!vm.isLoading">
+    <h3 layout="row" layout-align="center start"
+        style="font-family: 'Freestyle Script'; margin:1% 0 0 0; font-size: 56px;">Hi {{vm.userName}}, We happy to see
+        you!</h3>
+    <div layout="column" flex>
+        <div layout="row" layout-align="center start">
+            <md-button layout-align="center start" class="md-primary" ng-click="vm.switchUser()">Switch User</md-button>
+        </div>
+        <div layout="row">
+            <h4 style="margin-left:10%;">Your Favorite Attractions:</h4>
+            <h4 style="margin-left:35%;">These might be interest you as well:</h4>
+        </div>
+        <div layout="row" flex layout-align="space-around center">
+            <div layout-align="start center">
+                <div layout="row" style="margin-top: 2%;">
+                    <div ng-repeat="attraction in vm.savedAttractionsToShow">
+                        <md-card ng-include="'components/shared/attractionCard.html'"
+                                 style="height: 300px; width: 250px"></md-card>
+                    </div>
+                </div>
+                <div ng-if="vm.savedAttractionsToShow==undefined || vm.savedAttractionsToShow == null || vm.savedAttractionsToShow.length === 0">
+                    <p>it's seems like you not saved any attractions, </p>
+                    <p> you can use the heart icon on each attraction for saving it!</p>
+                </div>
+            </div>
+            <div>
+                <div layout="row" style="margin-top: 2%;">
+                    <div ng-repeat="attraction in vm.recommendAttractionsArray">
+                        <md-card ng-include="'components/shared/attractionCard.html'"
+                                 style="height: 300px; width: 250px"></md-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div layout="row" layout-align="center end" style="margin-top: 3%">
+        <md-button class="md-primary" href="#/attractions">All Attractions
+            <md-icon md-svg-icon="assets/icons/move-window.svg"></md-icon>
+        </md-button>
+    </div>
+
+</div>

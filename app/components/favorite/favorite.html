@@ -1,0 +1,101 @@
+<div ng-if="vm.isLoading" layout="row" flex layout-sm="column" layout-align="center center">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+<div layout="column" ng-if="!vm.isLoading" style="margin-top: 2%;">
+    <!--<div layout="row" layout-align="center center">-->
+
+    <div layout="row" layout-align="center center">
+
+        <div layout-gt-sm flex="40">
+            <md-autocomplete flex required
+                             md-selected-item="vm.searchAttraction"
+                             md-search-text="vm.searchText"
+                             md-items="item in vm.savedAttractions  | orderBy: 'Name' | filter:vm.searchText"
+                             md-item-text="item.Name"
+                             md-require-match
+                             md-floating-label="Attraction Search">
+                <md-item-template>
+                    <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.Name}}</span>
+                </md-item-template>
+                <md-not-found>
+                    No attraction matching "{{vm.searchText}} were found."
+                </md-not-found>
+            </md-autocomplete>
+            <md-button ng-click="vm.filterByAttraction()" class="md-icon-button" aria-label="Search">
+                <md-icon md-svg-icon="assets/icons/search.svg"></md-icon>
+            </md-button>
+        </div>
+    </div>
+    <div layout="row">
+
+        <div layout="column" style="margin-left:3%;">
+
+            <md-radio-group ng-model="radiosButtons" style="padding-left: 2%">
+                <h3>Types of Attractions:</h3>
+                <md-radio-button value="Food & Drink" ng-click="vm.filterByCategory(1)">Food & Drink</md-radio-button>
+                <md-radio-button value="Shopping" ng-click="vm.filterByCategory(2)"> Shopping</md-radio-button>
+                <md-radio-button value="NightLife & Tours" ng-click="vm.filterByCategory(3)">NightLife & Tours
+                </md-radio-button>
+                <md-radio-button value="Museums" ng-click="vm.filterByCategory(4)">Museums</md-radio-button>
+                <md-radio-button value="Concerts & Shows" ng-click="vm.filterByCategory(5)"> Concerts & Shows
+                </md-radio-button>
+                <md-radio-button value="all" class="md-primary" ng-click="vm.filterByCategory('all')">all
+                </md-radio-button>
+            </md-radio-group>
+
+            <md-input-container>
+                <h3>Sort By:</h3>
+                <md-select ng-model="vm.orderBy" ng-change="vm.sortAttractions()">
+                    <md-option value="Rank">Rank</md-option>
+                    <md-option value="My Order">My Order</md-option>
+                </md-select>
+            </md-input-container>
+            <md-button ng-click="toggleSidenav()" class="md-raised">
+                Change 'My Order'
+            </md-button>
+            <md-button ng-click="vm.savedAttractionsToDB()" class="md-raised">
+                Saved to DB
+            </md-button>
+
+        </div>
+
+        <md-grid-list flex
+                      md-cols="3" md-row-height="3:3"
+                      md-gutter="2px">
+            <md-grid-tile ng-repeat="attraction in vm.attractionsToShow">
+                <md-card ng-include="'components/shared/attractionCard.html'"
+                         style="height: 300px; width: 270px"></md-card>
+            </md-grid-tile>
+        </md-grid-list>
+
+
+        <md-sidenav class="md-sidenav-right" md-component-id="changeOrderSlide"
+                    style="min-width: 35%;" md-disable-close-events>
+            <div flex layout-align="center center">
+                <md-list>
+                    <md-list-item ng-repeat="attraction in vm.savedAttractionsSlide">
+                        <div layout="row" layout-align="center center">
+                            <md-button ng-disabled="$first" class="md-fab md-mini" ng-click="vm.moveUp(attraction)">
+                                <md-icon md-svg-src="assets/icons/arrow-up.svg"></md-icon>
+                            </md-button>
+                            <md-card ng-include="'components/shared/attractionCard.html'"
+                                     style="height: 300px; width: 270px"></md-card>
+                            <md-button ng-disabled="$last" class="md-fab md-mini" ng-click="vm.moveDown(attraction)">
+                                <md-icon md-svg-src="assets/icons/arrow-down.svg"></md-icon>
+                            </md-button>
+                        </div>
+                        <md-divider class="divider-inset" ng-if="!$last"></md-divider>
+                        </md-item>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                </md-list>
+            </div>
+        </md-sidenav>
+
+
+        <!--</div>-->
+        <!--</md-content>-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>

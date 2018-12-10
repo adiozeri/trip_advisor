@@ -1,0 +1,47 @@
+<div ng-if="!vm.getAllAttractionDone" layout="row" flex layout-sm="column" layout-align="center center">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+
+<md-content layout="column" flex ng-if="vm.getAllAttractionDone">
+    <div layout="row">
+        <div layout="column" flex layout-align="start" style="padding-left: 2%">
+            <form name="loginForm" style="width: 60%">
+                <label style="font-size: 20px;">Already a friend?</label>
+                <md-content layout="column" class="md-padding">
+                    <md-input-container md-no-float class="md-icon-float md-block" style=" margin: 5px">
+                        <label>User Name</label>
+                        <md-icon md-svg-src="assets/icons/person.svg" class="name"></md-icon>
+                        <input ng-model="vm.userLogin.username" type="text">
+                        <div ng-messages="loginForm.username.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container md-no-float class="md-block" style=" margin: 5px">
+                        <label>Password</label>
+                        <md-icon md-svg-src="assets/icons/password.svg"></md-icon>
+                        <input ng-model="vm.userLogin.password" type="password">
+                        <div ng-messages="loginForm.password.$error" role="alert">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+
+                    <div layout="row" layout-align="center center">
+                        <md-button type="submit" class="md-raised md-primary" ng-click="vm.login()">Login</md-button>
+                        <div flex="flex"></div>
+                        <md-button href="#/forgetPassword">Forgot Password</md-button>
+                    </div>
+                    <md-divider></md-divider>
+                    <md-button href="#/signUp">Sign Up</md-button>
+                </md-content>
+            </form>
+        </div>
+        <!--<img src="assets/photos/login-logo.jpg"> -->
+    </div>
+    <div flex layout="row" layout-align="space-around">
+        <div layout="column" ng-repeat="attraction in vm.attractions">
+            <md-card ng-include="'components/shared/attractionCard.html'" style="height: 350px; width: 350px"></md-card>
+        </div>
+    </div>
+
+</md-content>

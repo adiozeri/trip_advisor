@@ -1,0 +1,38 @@
+{
+  "name": "tripadvisor",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "angular": "^1.7.2",
+    "angular-animate": "^1.7.2",
+    "angular-bootstrap-md": "^6.1.2",
+    "angular-local-storage": "^0.7.1",
+    "angular-route": "^1.7.0",
+    "angular-simple-slideshow": "0.0.3",
+    "angular-star-rating": "^4.0.0-beta.3",
+    "angular-toastr": "^2.1.1",
+    "angular-ui-grid": "^4.5.0",
+    "angular1-star-rating": "^1.2.11",
+    "body-parser": "latest",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
+    "css-star-rating": "^1.2.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "jsonwebtoken": "^8.2.1",
+    "lodash": "^4.17.10",
+    "md-chips-select": "^1.0.2",
+    "morgan": "^1.9.0",
+    "ng-lodash": "^0.2.3",
+    "nodemon": "^1.17.5",
+    "q": "^1.5.1",
+    "simple-slideshow": "^2.0.0",
+    "tedious": "^2.3.1",
+    "tedious-connection-pool": "^1.0.5"
+  }
+}

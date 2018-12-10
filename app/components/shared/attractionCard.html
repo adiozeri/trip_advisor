@@ -1,0 +1,23 @@
+<img ng-click="vm.openAttraction(attraction)" ng-src="assets/photos/{{attraction.Pictures_ID[0]}}.jpg" class="md-card-image" style="height: 60%;" >
+<div layout="column" flex style="padding: 4%">
+    <div layout="row" layout-align="space-around center" flex>
+        <md-card-title-text >
+            <span style="font-size: 15px;">{{attraction.Name}}</span>
+        </md-card-title-text>
+
+        <md-button ng-if="!attraction.saved" class="md-icon-button" aria-label="Favorite" ng-click="vm.addToFavorite(attraction)">
+            <md-icon name="favorite_icon" md-svg-icon="assets/icons/favorite-heart.svg"></md-icon>
+        </md-button>
+        <md-button ng-if="attraction.saved" class="md-icon-button" aria-label="Favorite" ng-click="vm.removeFromFavorite(attraction)">
+            <md-icon name="favorite_icon" md-svg-icon="assets/icons/favorite-heart-pressed.svg"></md-icon>
+        </md-button>
+
+
+        </div>
+    <div layout="row" flex layout-align="space-around end">
+        <star-rating-comp show-half-stars="true" read-only="true" rating="attraction.Attraction_Rank/attraction.RankersCount"></star-rating-comp>
+        <span style="font-size: larger;">{{attraction.ViewersCount}}
+        <md-icon md-svg-icon="assets/icons/eye.svg"></md-icon>
+    </span>
+    </div>
+</div>

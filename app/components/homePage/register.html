@@ -1,0 +1,185 @@
+<div ng-if="!vm.getAllDone" layout="row" flex layout-sm="column" layout-align="center center">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+
+
+<div ng-if="vm.getAllDone" flex layout="column">
+
+    <div layout="row" layout-align="center start" style="margin-bottom: 2%;" >
+        <h3>Sign Up & Join Us!</h3>
+    </div>
+
+    <md-content class="md-no-momentum">
+        <div layout="column" layout-align="center">
+            <form name="vm.signUpForm">
+                <div layout="row" layout-align="center">
+                    <div style="width: 35%">
+                        <md-input-container class="md-icon-float md-block">
+                            <!-- Use floating label instead of placeholder -->
+                            <label>User Name</label>
+                            <md-icon md-svg-src="assets/icons/person.svg" class="name"></md-icon>
+                            <input ng-model="vm.user.username" type="text" name="username" ng-required="true"
+                                   minlength="3" maxlength="8" ng-pattern="/^[a-zA-Z]*$/">
+                            <div ng-messages="vm.signUpForm.username.$error" role="alert">
+                                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                    Your User Name must be between 3 and 8 characters long and contains letter only
+                                </div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container md-no-float class="md-block">
+                            <label>Password</label>
+                            <md-icon md-svg-src="assets/icons/password.svg"></md-icon>
+                            <input ng-model="vm.user.password" type="password" name="password" ng-required="true"
+                                   minlength="5" maxlength="10" ng-pattern="/^[a-zA-Z0-9]*$/">
+                            <div ng-messages="vm.signUpForm.password.$error" role="alert">
+                                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                    Your Password must be between 5 and 10 characters long and contains letter and
+                                    numbers only
+                                </div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-icon-float md-block">
+                            <label>First Name</label>
+                            <md-icon md-svg-src="assets/icons/person.svg" class="name"></md-icon>
+                            <input ng-model="vm.user.firstname" type="text" name="firstname" ng-required="true"
+                                   ng-pattern="/^[a-zA-Z]*$/">
+                            <div ng-messages="vm.signUpForm.firstname.$error" role="alert">
+                                <div ng-message-exp="['required','pattern']">
+                                    First Name is required
+                                </div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-icon-float md-block">
+                            <label>Last Name</label>
+                            <md-icon md-svg-src="assets/icons/family.svg" class="name"></md-icon>
+                            <input ng-model="vm.user.lastname" type="text" name="lastname" ng-required="true"
+                                   ng-pattern="/^[a-zA-Z]*$/">
+                            <div ng-messages="vm.signUpForm.lastname.$error" role="alert">
+                                <div ng-message-exp="['required','pattern']">
+                                    Last Name is required
+                                </div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <md-icon md-svg-src="assets/icons/email.svg" class="email"></md-icon>
+                            <input ng-model="vm.user.email" name="Email" type="email" placeholder="Email"
+                                   ng-required="true"
+                                   minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/">
+                            <div ng-messages="vm.signUpForm.Email.$error" role="alert">
+                                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                    Your email must be between 10 and 100 characters long and look like an e-mail
+                                    address.
+                                </div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container md-no-float class="md-block">
+                            <md-icon md-svg-src="assets/icons/city.svg" style="display:inline-block;"></md-icon>
+                            <input ng-model="vm.user.city" type="text" placeholder="City" name="City"
+                                   ng-required="true" ng-pattern="/^[- a-zA-Z]*$/">
+                            <div ng-messages="vm.signUpForm.City.$error" role="alert">
+                                <div ng-message-exp="['required','pattern']">
+                                    City is required
+                                </div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Country</label>
+                            <md-icon md-svg-src="assets/icons/country.svg" style="display:inline-block;"></md-icon>
+                            <md-select ng-model="vm.user.country" name="Country"
+                                       ng-required="true">
+                                <div ng-messages="vm.signUpForm.Country.$error" role="alert">
+                                    <div ng-message-exp="['required']">
+                                        City is required
+                                    </div>
+                                </div>
+                                <md-option ng-repeat="country in vm.XmlCountries" value="{{country.Name}}">
+                                    {{country.Name}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+
+                        <br>
+                    </div>
+                    <div style="margin-left: 10%; width: 35%">
+                        <label>Questions for account recovery:</label>
+                        <div layout="row">
+                            <md-input-container md-no-float class="md-block">
+                                <label>First Question</label>
+                                <md-icon md-svg-src="assets/icons/answer.svg" style="display:inline-block;"></md-icon>
+                                <input type="text" ng-model="vm.user.questionsAndAnswersForRetrive[0].question"
+                                       name="firstquestion"
+                                       ng-required="true" ng-pattern="/^[-? a-zA-Z0-9]*$/">
+                                <div ng-messages="vm.signUpForm.firstquestion.$error" role="alert">
+                                    <div ng-message-exp="['required','pattern']">
+                                        first question is required
+                                    </div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container md-no-float class="md-block">
+                                <label>First Answer</label>
+                                <input type="text" ng-model="vm.user.questionsAndAnswersForRetrive[0].answer"
+                                       name="firstanswer"
+                                       ng-required="true" ng-pattern="/^[- a-zA-Z0-9]*$/">
+                                <div ng-messages="vm.signUpForm.firstanswer.$error" role="alert">
+                                    <div ng-message-exp="['required','pattern']">
+                                        first answer is required
+                                    </div>
+                                </div>
+
+                            </md-input-container>
+                        </div>
+                        <div layout="row">
+                            <md-input-container md-no-float class="md-block">
+                                <label>Second Question</label>
+                                <md-icon md-svg-src="assets/icons/answer.svg" style="display:inline-block;"></md-icon>
+                                <input type="text" ng-model="vm.user.questionsAndAnswersForRetrive[1].question"
+                                       name="secondquestion"
+                                       ng-required="true" ng-pattern="/^[-? a-zA-Z0-9]*$/">
+                                <div ng-messages="vm.signUpForm.secondquestion.$error" role="alert">
+                                    <div ng-message-exp="['required','pattern']">
+                                        second question is required
+                                    </div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container md-no-float class="md-block">
+                                <label>Second Answer</label>
+                                <input type="text" ng-model="vm.user.questionsAndAnswersForRetrive[1].answer"
+                                       name="secondanswer"
+                                       ng-required="true" ng-pattern="/^[- a-zA-Z0-9]*$/">
+                                <div ng-messages="vm.signUpForm.secondanswer.$error" role="alert">
+                                    <div ng-message-exp="['required','pattern']">
+                                        second answer is required
+                                    </div>
+                                </div>
+
+                            </md-input-container>
+                        </div>
+                        <label>choose favorite categories: (at least two)</label>
+                        <br>
+                        <br>
+                        <div layout="row">
+                            <md-icon layout-align="start start" md-svg-src="assets/icons/favorite.svg"
+                                     style="margin: 0px"></md-icon>
+                            <md-chips-select  ng-model="vm.user.categories"
+                                             select-items="vm.categories"
+                                             main-title="Name" ></md-chips-select>
+
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </md-content>
+    <div layout="row" layout-align="center end">
+        <md-button type="submit" class="md-fab md-primary md-hue-2" ng-click="vm.signUp()">
+            <md-icon md-svg-src="assets/icons/save.svg"></md-icon>
+        </md-button>
+    </div>
+</div>
